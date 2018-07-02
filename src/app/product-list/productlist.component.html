@@ -1,0 +1,28 @@
+<div class="container" *ngIf='productList.length>0'>
+<div>
+  <label for="searchTerm">Search</label>
+  <input type="text" [(ngModel)]='searchTerm' name="searchTerm" id='searchTerm'>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th (click)='sort("name")'>Name</th>
+      <th>Description</th>
+      <th (click)="sort('price')">Price</th>
+      <th>Quantity</th>
+      <th>Color</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of productList|filter:searchTerm|sort:{prop:prop,isAsc:isAsc}">
+      <td><input type="checkbox" [(ngModel)]="product.checked" (click)="selectItem(product)">
+      <td>{{product.name}}</td>
+      <td>{{product.desc}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.quantity}}</td>
+      <td>{{product.color}}</td>
+    </tr>
+  </tbody>
+</table>
+<button (click)="addItem()">Add</button>
+</div>

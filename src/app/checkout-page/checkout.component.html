@@ -1,0 +1,20 @@
+<div class="container">
+<div *ngIf="items.length>0">
+  <button (click)="goBack()">back</button>
+  <table class="table">
+    <p>list</p>
+    <tr *ngFor="let list of items">
+      <td>{{list.name}}</td>
+      <td>{{list.desc}}</td>
+      <td>{{list.price}}</td>
+      <td>{{list.quantity}}</td>
+      <td>{{list.color}}</td>
+      <td><button (click)="deleteItem(list)">delete</button></td>
+    </tr>
+  </table>
+</div>
+<div *ngIf="items.length==0">Please go to home page and add items to cart</div>
+<div>
+  <button >PDF</button>
+</div>
+</div>
