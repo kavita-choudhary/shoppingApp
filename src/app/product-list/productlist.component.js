@@ -16,8 +16,7 @@ var ProductListComponent = (function () {
     function ProductListComponent(ds, router) {
         this.ds = ds;
         this.router = router;
-        this.isAscending = false;
-        this.isAsc = this.isAscending == true ? 1 : -1;
+        this.direction = false;
         this.selectArray = [];
         this.productList = [];
     }
@@ -35,8 +34,8 @@ var ProductListComponent = (function () {
         });
     };
     ProductListComponent.prototype.sort = function (prop) {
-        this.isAscending = !this.isAscending;
-        this.isAsc = this.isAscending == true ? -1 : 1;
+        this.direction = !this.direction;
+        this.isAsc = this.direction === true;
         this.prop = prop;
     };
     ProductListComponent.prototype.selectItem = function (product) {

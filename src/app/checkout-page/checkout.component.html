@@ -15,6 +15,9 @@
 </div>
 <div *ngIf="items.length==0">Please go to home page and add items to cart</div>
 <div>
-  <button >PDF</button>
+  <button (click)="openPdf()">PDF</button>
+  <div *ngIf="showPdf">
+    <iframe width="600" height="400" [src]="dataLocalUrl" type="application/pdf"></iframe>
+  </div>
 </div>
 </div>

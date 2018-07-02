@@ -10,23 +10,16 @@ var core_1 = require("@angular/core");
 var SortPipe = (function () {
     function SortPipe() {
     }
-    SortPipe.prototype.transform = function (items, args) {
-        return items.sort(function (a, b) {
-            console.log('piep', args.isAsc);
-            if (a[args.prop].toString().toLowerCase() < b[args.prop].toString().toLowerCase()) {
-                console.log(-1 * args.isAsc);
-                return -1 * args.isAsc;
-            }
-            else if (a[args.prop].toString().toLowerCase() > b[args.prop].toString().toLowerCase()) {
-                console.log(1 * args.isAsc);
-                return 1 * args.isAsc;
-            }
-            else {
-                return 0;
-            }
+    SortPipe.prototype.transform = function (inputArr, args) {
+        if (!inputArr) {
+            return;
+        }
+        console.log(args);
+        var sortedData = inputArr.sort(function (a, b) {
+            return (a[args.prop] < b[args.prop] ? -1 : 1) * (args.isAsc ? 1 : -1);
         });
+        return sortedData;
     };
-    ;
     return SortPipe;
 }());
 SortPipe = __decorate([

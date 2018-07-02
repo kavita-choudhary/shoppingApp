@@ -13,8 +13,8 @@ import {Router} from '@angular/router';
 export class ProductListComponent implements OnInit{
 
   constructor(private ds:DataService, private router:Router){}
-  isAscending:boolean = false;
-  isAsc :number =this.isAscending==true?1:-1 ;
+  direction:boolean = false;
+  isAsc :boolean ;
   prop:any;
   selectArray:Array<any>=[];
   productList:any=[];
@@ -33,8 +33,8 @@ export class ProductListComponent implements OnInit{
       })
   }
   sort(prop:any){
-      this.isAscending = !this.isAscending;
-      this.isAsc =this.isAscending==true?-1:1;
+      this.direction = !this.direction;
+      this.isAsc =this.direction===true;
       this.prop = prop;
   }
 
